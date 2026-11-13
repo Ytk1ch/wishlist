@@ -408,7 +408,6 @@
     if (box.dataset.typed) return;
     box.dataset.typed = "1";
     var chars = box.querySelectorAll(".ch");
-    if (reduceMotion) { Array.prototype.forEach.call(chars, function (c) { c.classList.add("on"); }); return; }
     var step = Math.min(22, 2600 / Math.max(chars.length, 1)), i = 0;
     var timer = setInterval(function () {
       if (i >= chars.length) { clearInterval(timer); return; }
