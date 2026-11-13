@@ -250,10 +250,6 @@
   .empty-state { text-align: center; padding: 80px 16px; color: var(--muted); font-family: var(--head); letter-spacing: .2em; }
   footer { text-align: center; padding: 30px 16px 50px; color: #4b4e5c; font-size: 12px; letter-spacing: .25em; }
 
-  @media (prefers-reduced-motion: reduce) {
-    .glitch, .glitch::before, .glitch::after, #intro::before, .card { animation: none !important; }
-    .bar i { animation-duration: .8s; }
-  }
 </style>
 </head>
 <body class="locked">
@@ -403,7 +399,6 @@
   });
 
   /* текст комментария "печатается" по буквам, один раз при первом открытии */
-  var reduceMotion = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
   function typeComment(box) {
     if (box.dataset.typed) return;
     box.dataset.typed = "1";
@@ -447,8 +442,7 @@
   }
   intro.addEventListener("click", closeIntro);
   document.addEventListener("keydown", closeIntro);
-  var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
-  setTimeout(closeIntro, reduce ? 1200 : 3000);
+  setTimeout(closeIntro, 3000);
 })();
 </script>
 </body>
