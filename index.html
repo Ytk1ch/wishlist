@@ -382,6 +382,9 @@
     }
     Array.prototype.forEach.call(grid.querySelectorAll(".pic img"), function (img) {
       img.addEventListener("error", function () {
+        /* если картинки лежат не в папке img, а рядом с index.html, пробуем без "img/" */
+        var s = img.getAttribute("src") || "";
+        if (!img.dataset.retry && /^img\//.test(s)) { img.dataset.retry = "1"; img.src = s.replace(/^img\//, ""); return; }
         var p = img.parentNode; p.className = "pic empty"; p.innerHTML = "НЕТ<br>ФОТО";
       });
     });
